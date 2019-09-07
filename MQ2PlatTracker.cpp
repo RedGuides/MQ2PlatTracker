@@ -3,7 +3,7 @@
 // v1.01 :: Sym - 2013-01-03 - Added plat per hour average
 // v1.02 :: Sym - 2013-01-27 - Fixed timer reset for plat per hour average
 
-#include "../MQ2Plugin.h"
+#include <MQ2Plugin.h>
 
 
 PLUGIN_VERSION(1.02);
@@ -22,7 +22,7 @@ PreSetup("MQ2PlatTracker");
 
 
 // TIMESTAMP StartTime;
-ULONGLONG StartTime = GetTickCount642();
+ULONGLONG StartTime = GetTickCount64();
 unsigned int sCash = 0;
 unsigned int cCash = 0;
 
@@ -42,12 +42,12 @@ void PlatTrackerCommand(PSPAWNINFO pChar, PCHAR szLine) {
     if(!_strnicmp(szTemp,"reset",5)) {
 		sCash=GetCharInfo2()->Plat*1000+GetCharInfo2()->Gold*100+GetCharInfo2()->Silver*10+GetCharInfo2()->Copper;
 		WriteChatf("MQ2PlatTracker :: \ayStarting amount reset to %.3f platinum\ax", float(sCash)/1000);
-		StartTime = GetTickCount642();
+		StartTime = GetTickCount64();
         return;
     }
 	if(!_strnicmp(szTemp,"show",5)) {
 		cCash = GetCharInfo2()->Plat*1000+GetCharInfo2()->Gold*100+GetCharInfo2()->Silver*10+GetCharInfo2()->Copper;
-	    ULONGLONG RunningTime = GetTickCount642() - StartTime;
+	    ULONGLONG RunningTime = GetTickCount64() - StartTime;
 	    FLOAT RunningTimeFloat = (float)RunningTime/HOUR;
 
 		if (cCash > sCash) {
@@ -84,7 +84,7 @@ PLUGIN_API VOID SetGameState(DWORD GameState) {
     DebugSpewAlways("MQ2PlatTracker::SetGameState()");
     if (GameState==GAMESTATE_INGAME && !didInit) {
 		didInit = true;
-		StartTime = GetTickCount642();
+		StartTime = GetTickCount64();
 		sCash=GetCharInfo2()->Plat*1000+GetCharInfo2()->Gold*100+GetCharInfo2()->Silver*10+GetCharInfo2()->Copper;
 		WriteChatf("\atMQ2PlatTracker :: v%1.2f :: by Sym for RedGuides.com\ax", MQ2Version);
 	}
