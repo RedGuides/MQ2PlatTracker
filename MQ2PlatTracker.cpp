@@ -3,7 +3,7 @@
 // v1.01 :: Sym - 2013-01-03 - Added plat per hour average
 // v1.02 :: Sym - 2013-01-27 - Fixed timer reset for plat per hour average
 
-#include <MQ2Plugin.h>
+#include <mq/Plugin.h>
 
 
 PLUGIN_VERSION(1.02);
