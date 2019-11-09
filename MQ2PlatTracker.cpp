@@ -40,13 +40,13 @@ void PlatTrackerCommand(PSPAWNINFO pChar, PCHAR szLine) {
     int b = 0;
     GetArg(szTemp,szLine,1);
     if(!_strnicmp(szTemp,"reset",5)) {
-		sCash=GetCharInfo2()->Plat*1000+GetCharInfo2()->Gold*100+GetCharInfo2()->Silver*10+GetCharInfo2()->Copper;
+		sCash=GetPcProfile()->Plat*1000+GetPcProfile()->Gold*100+GetPcProfile()->Silver*10+GetPcProfile()->Copper;
 		WriteChatf("MQ2PlatTracker :: \ayStarting amount reset to %.3f platinum\ax", float(sCash)/1000);
 		StartTime = GetTickCount64();
         return;
     }
 	if(!_strnicmp(szTemp,"show",5)) {
-		cCash = GetCharInfo2()->Plat*1000+GetCharInfo2()->Gold*100+GetCharInfo2()->Silver*10+GetCharInfo2()->Copper;
+		cCash = GetPcProfile()->Plat*1000+GetPcProfile()->Gold*100+GetPcProfile()->Silver*10+GetPcProfile()->Copper;
 	    ULONGLONG RunningTime = GetTickCount64() - StartTime;
 	    FLOAT RunningTimeFloat = (float)RunningTime/HOUR;
 
@@ -85,7 +85,7 @@ PLUGIN_API VOID SetGameState(DWORD GameState) {
     if (GameState==GAMESTATE_INGAME && !didInit) {
 		didInit = true;
 		StartTime = GetTickCount64();
-		sCash=GetCharInfo2()->Plat*1000+GetCharInfo2()->Gold*100+GetCharInfo2()->Silver*10+GetCharInfo2()->Copper;
+		sCash=GetPcProfile()->Plat*1000+GetPcProfile()->Gold*100+GetPcProfile()->Silver*10+GetPcProfile()->Copper;
 		WriteChatf("\atMQ2PlatTracker :: v%1.2f :: by Sym for RedGuides.com\ax", MQ2Version);
 	}
 }
