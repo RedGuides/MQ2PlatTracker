@@ -9,11 +9,10 @@
 PLUGIN_VERSION(1.02);
 PreSetup("MQ2PlatTracker");
 
-
-#define SECOND 1000
-#define MINUTE (60 * SECOND)
-#define HOUR (60 * MINUTE)
-#define DAY (24 * HOUR)
+constexpr auto SECOND = 1000;
+constexpr auto MINUTE = (60 * SECOND);
+constexpr auto HOUR = (60 * MINUTE);
+constexpr auto DAY = (24 * HOUR);
 
 //typedef struct _timestamp {
 //  SYSTEMTIME systime;
