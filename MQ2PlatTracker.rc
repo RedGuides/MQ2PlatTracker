@@ -75,7 +75,6 @@ BEGIN
 #endif
             VALUE "FileVersion", "1.02"
             VALUE "InternalName", "MQ2PlatTracker.dll"
-            VALUE "LegalCopyright", "Licensed under the GNU GPL v2"
             VALUE "OriginalFilename", "MQ2PlatTracker.dll"
             VALUE "ProductName", "MQ2PlatTracker"
             VALUE "ProductVersion", "1.02"
